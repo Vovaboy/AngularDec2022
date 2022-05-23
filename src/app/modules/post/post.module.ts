@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserComponent } from '../user/components/user/user.component';
-import { UsersComponent } from '../user/components/users/users.component';
-import { UserDetailsComponent } from '../user/components/user-details/user-details.component';
+
 import { PostComponent } from './components/post/post.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import {PostService} from "./services";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {PostRoutingModule} from "./post-routing.module";
 
 
 
 @NgModule({
   declarations: [
-    UserComponent,
-    UsersComponent,
-    UserDetailsComponent,
     PostComponent,
     PostsComponent,
     PostDetailsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    PostRoutingModule
+  ],
+  providers:[
+    PostService
   ]
 })
 export class PostModule { }
