@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterModule, Routes} from "@angular/router";
-import {MainLayoutsComponent} from "./layouts/main-layouts/main-layouts.component";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
 
-const routes:Routes = [
+import {MainLayoutComponent} from './layouts/main-layout/main-layout.component';
+
+const routes: Routes = [
   {
-    path:'',component: MainLayoutsComponent, children:[
-      {path:'', redirectTo:'users', pathMatch: 'full'},
-      {path: 'users',loadChildren: () => import('./modules').then(value => value.UserModule )},
-      {path: 'posts',loadChildren: () => import('./modules').then(value => value.UserModule )},
-      {path: 'commetns',loadChildren: () => import('./modules').then(value => value.UserModule )},
-
+    path: '', component: MainLayoutComponent, children: [
+      {path: '', redirectTo: 'users', pathMatch: 'full'},
+      {path: 'users', loadChildren: () => import('./modules').then(value => value.UserModule)},
+      {path: 'posts', loadChildren: () => import('./modules').then(value => value.PostModule)},
+      {path: 'comments', loadChildren: () => import('./modules').then(value => value.CommentModule)},
     ]
   }
 ]
@@ -21,8 +21,9 @@ const routes:Routes = [
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
